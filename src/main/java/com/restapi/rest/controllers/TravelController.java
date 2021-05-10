@@ -7,14 +7,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/travels")
  public class TravelController {
 
-     @GetMapping("/travels")
+     @GetMapping()
      public List<Travel> getAllTravels() {
         return TravelService.getAllTravels();
     }
 
-     @GetMapping("/travel/{travelID}")
+     @GetMapping("/{travelID}")
      public Travel getTravelDetails(@PathVariable Integer travelID) {
         return TravelService.getTravelDetails(travelID);
     }

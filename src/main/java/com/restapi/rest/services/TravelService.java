@@ -10,22 +10,18 @@ import java.util.Map;
 
  public class TravelService {
      private static Map<Integer, Travel> travels = new HashMap<>();
-     private static Integer index = 2;
-
-     static {
-         Travel travel1 = new Travel(1, "Sport", 200, "Eco");
-         Travel travel2 = new Travel(2, "Sport", 350, "Super");
-
-         travels.put(1, travel1);
-         travels.put(2, travel2);
-     }
+     private static Integer index = 0;
 
      public static List<Travel> getAllTravels() {
          return new ArrayList<>(travels.values());
      }
 
      public static Travel getTravelDetails(Integer travelID) {
-        return travels.get(travelID);
+         if (!travels.containsKey(travelID)) {
+             throw new NotFoundException();
+         }
+
+         return travels.get(travelID);
      }
 
      public static Travel addTravel(Travel travel) {
@@ -41,6 +37,7 @@ import java.util.Map;
          if (!travels.containsKey(travelID)) {
              throw new NotFoundException();
          }
+
          travel.setId(travelID);
          travels.put(travelID, travel);
          return travelPast;
