@@ -1,4 +1,4 @@
-package com.restapi.rest.models;
+package com.restapi.rest.entities;
 
  public class Travel {
 

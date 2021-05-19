@@ -1,7 +1,7 @@
 package com.restapi.rest.services;
 
 import com.restapi.rest.exceptions.NotFoundException;
-import com.restapi.rest.models.Travel;
+import com.restapi.rest.entities.Travel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
