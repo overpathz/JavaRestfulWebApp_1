@@ -17,9 +17,7 @@ import java.util.Map;
      }
 
      public static Travel getTravelDetails(Integer travelID) {
-         if (!travels.containsKey(travelID)) {
-             throw new NotFoundException();
-         }
+         throwNotFoundException(travelID);
 
          return travels.get(travelID);
      }
@@ -34,9 +32,7 @@ import java.util.Map;
      public static Travel updateTravel(Integer travelID, Travel travel) {
          Travel travelPast = travels.get(travelID);
 
-         if (!travels.containsKey(travelID)) {
-             throw new NotFoundException();
-         }
+         throwNotFoundException(travelID);
 
          travel.setId(travelID);
          travels.put(travelID, travel);
@@ -44,6 +40,13 @@ import java.util.Map;
      }
 
      public static Travel deleteTravel(Integer travelID) {
+         throwNotFoundException(travelID);
          return travels.remove(travelID);
      }
+  
+     private static void throwNotFoundException(Integer travelID) {
+        if (!travels.containsKey(travelID)) {
+            throw new NotFoundException();
+        }
+    }
  }
